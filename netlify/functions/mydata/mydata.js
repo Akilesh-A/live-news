@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors'); // Import CORS middleware
-
+const serverless = require('serverless-http');
 // Middleware to parse JSON bodies
 app.use(express.json());
 
@@ -28,3 +28,5 @@ app.get("/api/data", (req, res) => {
 });
 
 
+
+module.exports.handler = serverless(app);

@@ -1,5 +1,5 @@
 [build]
-  command = "npm run dev"  # Command to build your project, adjust as per your setup
+  command = "npm run build"  # Command to build your project, adjust as per your setup
   functions = "netlify/functions"  # Folder where Netlify functions are located
   publish = "build"  # Folder with the static content for deployment
 
