@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'data')));
 
 // Endpoint to fetch data from db.json
-app.get("/api/data", (req, res) => {
+app.get("/data", (req, res) => {
   const filePath = path.resolve(__dirname, '..', '..', '..', 'data', 'db.json');
 
   // Read file asynchronously
