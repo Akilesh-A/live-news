@@ -28,7 +28,9 @@ export default {
         }
     },
     mounted() {
-        fetch('https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=a285c7d6c6084dbd90549b2262d29620')
+        const apiKey='a285c7d6c6084dbd90549b2262d29620'
+        const url=`https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=${apiKey}`
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 console.log(data.articles);

@@ -1,42 +1,46 @@
 <template>
-<div>
-    Buisness
-</div>
-<h1>{{ about.position }}</h1>
-
-<div v-for="(index,items) in buisnessnews" :key="items">
-    <img :src="index.urlToImage" alt="" width="100%">
-    <h4 style="text-align: center;">{{ index.title }}</h4>
-
-</div>
-</template>
-<script>
-export default{
-    props:['about'],
-
-    data(){
-        return{
-            buisnessnews:[]
-
-        };
+    <div>
+      <div>
+        Business
+      </div>
+      <h1>{{ about.position }}</h1>
+  
+      <div v-for="(article, index) in businessNews" :key="index">
+        <img :src="article.urlToImage" alt="" width="100%">
+        <h4 style="text-align: center;">{{ article.title }}</h4>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    props: ['about'], 
+  
+    data() {
+      return {
+        businessNews: [] 
+      };
     },
-    async mounted(){
-      let respo=await fetch('https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=a285c7d6c6084dbd90549b2262d29620')
-      
-     
-      if(respo.status!==200){
-        console.error('bad request from  server');
-      }
-      let data=await respo.json()
-      
-      this.buisnessnews =data.articles;
-      console.log(this.buisnessnews);
-
-
+  
+    mounted() {  
+      const apiKey = 'a285c7d6c6084dbd90549b2262d29620';
+      const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apiKey}`;
+  
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          this.businessNews = data.articles; 
+          console.log(this.businessNews);  
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error); 
+        });
     }
-
-
-    
-}
-
-</script>
+  };
+  </script>
+  
