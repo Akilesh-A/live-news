@@ -71,7 +71,7 @@ export default {
       this.visibleCount += 6;
     },
     fetchData() {
-      fetch('/.netlify/functions/mydata/data')
+      fetch('/api/data')
         .then(res => {
           if (!res.ok) {
             throw new Error('Network response was not ok');
