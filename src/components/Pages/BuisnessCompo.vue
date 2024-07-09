@@ -21,8 +21,8 @@
         businessNews: [] 
       };
     },
-  
-    mounted() {  
+   methods:{
+    contentbusiness() {  
       const apiKey = 'a285c7d6c6084dbd90549b2262d29620';
       const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${apiKey}`;
   
@@ -41,6 +41,12 @@
           console.error('Error fetching data:', error); 
         });
     }
-  };
+  }
+,
+created() {
+    // Call contentbusiness method when component is created
+    this.contentbusiness();
+  }}
+  
   </script>
   
